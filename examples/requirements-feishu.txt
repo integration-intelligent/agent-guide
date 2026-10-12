@@ -1,0 +1,3 @@
+-r requirements.txt
+lark-oapi==1.7.3
+tzdata>=2024.1

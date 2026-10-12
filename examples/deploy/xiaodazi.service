@@ -1,0 +1,24 @@
+[Unit]
+Description=Xiaodazi personal Feishu agent
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=xiaodazi
+WorkingDirectory=/opt/xiaodazi/examples
+EnvironmentFile=/etc/xiaodazi.env
+Environment=AGENT_DATA_DIR=/var/lib/xiaodazi
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/opt/xiaodazi/examples/.venv/bin/python /opt/xiaodazi/examples/feishu_bot.py
+Restart=on-failure
+RestartSec=10
+StateDirectory=xiaodazi
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target
